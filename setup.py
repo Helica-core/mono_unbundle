@@ -1,12 +1,13 @@
 from setuptools import setup, find_packages
 from pipenv.project import Project
-from pipenv.utils import convert_deps_to_pip
+#from pipenv.utils import convert_deps_to_pip
+from pipenv.utils.dependencies import convert_deps_to_pip
 from os import path
 from io import open
 
 here = path.abspath(path.dirname(__file__))
 pfile = Project(__file__).parsed_pipfile
-requirements = convert_deps_to_pip(pfile['packages'], r=False)
+requirements = convert_deps_to_pip(pfile['packages'])
 print(requirements)
 
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
